@@ -1,0 +1,126 @@
+@import '../../global-stylesheets/variables.scss';
+// @import '../../global-stylesheets/animations.scss';
+
+.modal-container {
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85);
+
+    z-index: 1;
+
+    .modal {
+        position: fixed;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%) rotate(90deg);
+        border: 2px solid $secondary-color;
+        box-shadow: 0px 0px 15px $secondary-color;
+        border-radius: 25px;
+        background: radial-gradient(darken($inner-gradient-color, 5%), $outer-gradient-color);
+        color: $main-color;
+        
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        padding: 5px;
+        height: auto;
+
+        //background: reg;
+
+        .modal-header {
+            
+            flex-basis: 5%;
+            flex-shrink: 0;
+
+            padding: 0px 25px;
+
+            // //background: green;
+
+            h2 {
+                font-size: 2em;
+            }
+
+        }
+
+        .modal-body {
+            padding: 5px 25px;
+            text-align: justify;
+            flex-basis: 90%;
+            flex-grow: 2;
+            flex-shrink: 2;
+            display: flex;
+            justify-content: center;
+
+            //background: blue;
+
+            .modal-image-container {
+                position: relative; 
+                width: 70vh; 
+                height: 55vw;
+                display: flex;
+                justify-content: center;
+                align-items: stretch;
+                padding-right: 25px;
+
+                img {
+                    position: absolute;
+                    width: auto;
+                    height: 100%;
+                }
+                
+            }
+        }
+
+        .modal-footer {
+            display: flex;
+            align-content: center;
+            justify-content: flex-end;
+            margin-bottom: 10px;
+            margin-right: 10px;
+
+            flex-basis: 5%;
+            flex-shrink: 0;
+
+            //background: purple;
+
+            button {
+                border-radius: 5%;
+                border: 1px solid $main-color;
+                padding: 5px 10px;
+                outline: none;
+                background-color: transparent;
+                transition-property: transform, background-color;
+                transition: $transition-fast $default-timing-function;
+                cursor: pointer;
+            }
+
+            button:hover {
+                transform: scale(1.05);
+                background-color: black;
+                color: white;
+            }
+        }
+    }
+}
+
+
+@media (min-width: 992px) {
+    .modal-container {
+        .modal {
+            padding: 25px;
+            transform: translate(-50%, -50%);
+            .modal-body {
+                padding: 5px 25px;
+
+                .modal-image-container {
+                    width: 70vw; 
+                    height: 70vh;
+                }
+            }
+        }       
+    }
+}

@@ -1,0 +1,78 @@
+@import '../../../global-stylesheets/variables.scss';
+
+$separator-color: #aaa8;;
+
+section {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    
+    padding: 15px;
+}
+
+h3 {
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.minor-projects-list-container {
+    overflow-y: auto;
+    max-height: 400px;
+}
+
+.minor-projects-list {
+
+    padding: 5px 10px;
+    
+    list-style: none;
+    
+    display: flex;
+    flex-direction: column;
+    
+    li {
+        padding: 15px 20px;
+        
+        align-self: stretch;
+        
+        border: none;
+        border-bottom: 2px solid $separator-color;
+        
+        color: $secondary-color;
+        
+        transition: background-color 0.2s ease-in-out, color 0.15s ease-in-out;
+
+        app-minor-project {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+    
+    li:first-child {
+        border-top: 2px solid $separator-color;
+    }
+    
+    li:hover {
+        background-color: #ffffff10;
+        color: $tertiary-color;
+    }
+}
+
+
+@media (min-width: 992px) {
+    .minor-projects-list-container {
+        transition-property: transform, opacity;
+        transform-origin: top;
+        transition: 0.5s ease-in-out;
+    }
+
+    .minor-projects-list {
+        padding: 20px 40px;
+        li {
+            app-minor-project {
+                justify-content: space-between;
+            }
+        }
+    }
+}

@@ -1,0 +1,220 @@
+@import '../../global-stylesheets/variables.scss';
+@import '../../global-stylesheets/animations.scss';
+
+
+@keyframes shakeAnimation {
+
+    $base-shake-offset: 7px;
+
+    0% {
+        transform: translate(0)
+    }
+
+    10% {
+        transform: translate($base-shake-offset)
+    }
+
+    20% {
+        transform: translate(-2 * $base-shake-offset)
+    }
+
+    30% {
+        transform: translate(3 * $base-shake-offset)
+    }
+
+    40% {
+        transform: translate(-4 * $base-shake-offset)
+    }
+
+    50% {
+        transform: translate(0)
+    }
+
+    60% {
+        transform: translate(4 * $base-shake-offset)
+    }
+
+    70% {
+        transform: translate(-3 * $base-shake-offset)
+    }
+
+    80% {
+        transform: translate(2 * $base-shake-offset)
+    }
+
+    90% {
+        transform: translate(-1 * $base-shake-offset)
+    }
+
+    100% {
+        transform: translate(0)
+    }
+}
+
+
+form {
+    display: flex;
+    flex-direction: column;
+    
+    width: 90%;
+
+    padding: 10px 5px;
+
+    border: 1px solid $main-color;
+
+    max-height: 80vh;
+
+    position: relative;
+
+    background-color: $card-background-color;
+
+    box-shadow: 0px 0px 10px $secondary-color;
+    
+    
+    h1 {
+        margin-bottom: 20px;
+        text-align: center;
+        font-size: 2.5em;
+        color: $main-color;
+    }
+    
+    input, textarea, button {
+        font-size: 1.5em;
+        margin-bottom: 10px;
+        outline: none;
+    }
+    
+    input, textarea {
+        background-color: transparent;
+        padding: 5px;
+        color: white;
+        
+        border: 1px solid $main-color;
+        border-radius: 5px;
+
+        width: 90%;
+
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    input::placeholder, textarea::placeholder {
+        color: $main-color;
+        opacity: 0.6;
+    }
+    
+    input {
+        padding: 10px 10px;
+        border: none;
+        border-bottom: 1px solid $main-color;
+        border-radius: 0;
+    }
+    
+    textarea {
+        height: 50px;
+        resize: none;
+        padding: 10px;
+        margin-bottom: 15px;
+        
+    }
+    
+    hr {
+        display: none;
+        background-color: $main-color;
+    }
+    
+    button {
+        color: $main-color;
+        margin-left: auto;
+        margin-right: auto;
+        
+        border: 2px solid $secondary-color;
+        font-weight: bold;
+        box-shadow: 0px 0px 5px $secondary-color;
+        background-color: $tertiary-color;
+        
+        i {
+            margin-left: 15px;
+        }
+    }
+    
+    
+    input, textarea, button {
+        transition-property: transform, box-shadow;
+        transition-duration: $transition-fast;
+        transition-timing-function: $default-timing-function;
+    }
+    
+    input:focus, textarea:focus, button:hover {
+        transform: scale(1.015, 1.035);
+    }
+
+    // input:focus, textarea:focus {
+    //     box-shadow: 0px 0px 5px $main-color;
+    // }
+    
+    .shake-animation {
+        animation: shakeAnimation 0.5s linear 1 forwards;
+    }
+}
+
+.form-animation {
+    opacity: 0;
+    animation: fadeIn 0.7s 0.1s $default-timing-function 1 forwards;
+}
+
+form.blurred {
+    transition: opacity 0.25s linear;
+    opacity: 0.4;
+    filter: brightness(0.35);
+}
+
+@media (min-width: 768px) {
+    form {
+        width: 60%;
+
+        padding: 25px;
+        border-radius: 35px;
+
+        h1 {
+            margin-bottom: 35px;
+        }
+
+        hr {
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        input, textarea, button {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+        }
+        
+    }
+}
+
+@media (min-width: 992px) {
+    form {
+
+        textarea {
+            height: 125px;
+        }
+
+    }
+}
+
+@media (min-width: 1200px) {
+    form {
+        width: unset;
+
+        input, textarea, button {
+            font-size: 1em;
+        }
+
+        textarea {
+            min-width: 420px;
+            height: 175px;
+        }
+
+    }
+}

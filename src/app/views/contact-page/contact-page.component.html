@@ -1,0 +1,34 @@
+<section class="centered-flex-container">
+  <form 
+    #contactForm 
+    (submit)="validateAndSubmit($event)" 
+    class="{{ animateForm() ? 'form-animation' : '' }} {{ awaitingResponse ? 'blurred' : '' }}" 
+    (animationend)="animationDidFinish($event)"
+  >
+    
+    <h1>Contato</h1>
+    
+    <input type="text" placeholder="Seu nome" (input)="updateFormValue($event, 'name')" #name />
+    
+    <input type="text" placeholder="Seu email" (input)="updateFormValue($event, 'email')" #email />
+    
+    <input type="tel" placeholder="Telefone" (input)="updateFormValue($event, 'phoneNumber')" #phoneNumber />
+    
+    <input type="text" placeholder="Assunto" (input)="updateFormValue($event, 'subject')" #subject />
+    
+    <textarea placeholder="Sua mensagem..." (input)="updateFormValue($event, 'messageBody')" #messageBody ></textarea>
+    
+    <hr> 
+    
+    <button type="submit" class="bt-button">ENVIAR MENSAGEM<i class="fas fa-paper-plane"></i></button>
+    
+  </form>
+
+  <app-loading-spinner style="position: absolute;" *ngIf="awaitingResponse"></app-loading-spinner>
+
+  <div *ngIf="modalIsShowing()">
+    <app-modal [modalData]="modalData" modalType="text" (closeModalEvent)="closeModal()"></app-modal>
+  </div>
+  
+</section>
+
